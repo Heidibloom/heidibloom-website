@@ -53,6 +53,7 @@ collections:
           - label: Testimonials
             name: items
             widget: list
+            required: false
             fields:
               - label: Type
                 name: type
