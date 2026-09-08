@@ -2,6 +2,7 @@ backend:
   name: github
   repo: Heidibloom/heidibloom-website
   branch: main
+  auth_scope: public_repo
 
 media_folder: uploads
 public_folder: /uploads
