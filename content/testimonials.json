@@ -1,0 +1,6 @@
+{
+  "items": [
+    {"type": "text", "name": "Private guest", "text": "A thoughtful, warm experience from beginning to end.", "image": ""},
+    {"type": "text", "name": "Returning guest", "text": "Elegant, easygoing, and beautifully organized.", "image": ""}
+  ]
+}

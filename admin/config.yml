@@ -1,0 +1,62 @@
+backend:
+  name: github
+  repo: REPLACE_WITH_GITHUB_USERNAME/REPLACE_WITH_REPOSITORY
+  branch: main
+
+media_folder: uploads
+public_folder: /uploads
+
+collections:
+  - name: site
+    label: Website Settings
+    files:
+      - name: settings
+        label: Main Settings
+        file: content/site.json
+        format: json
+        fields:
+          - {label: Site name, name: siteName, widget: string}
+          - {label: Tagline, name: tagline, widget: string}
+          - {label: About, name: about, widget: text}
+          - {label: Homepage image, name: homepageImage, widget: image}
+          - label: Theme
+            name: theme
+            widget: select
+            options:
+              - {label: Classic, value: classic}
+              - {label: Rose, value: rose}
+              - {label: Sage, value: sage}
+              - {label: Midnight, value: midnight}
+              - {label: Sand, value: sand}
+              - {label: Custom accent, value: custom}
+          - {label: Custom accent color, name: customAccent, widget: color, required: false}
+          - {label: Inquiry heading, name: inquiryHeading, widget: string}
+          - {label: Inquiry note, name: inquiryNote, widget: text}
+      - name: gallery
+        label: Gallery
+        file: content/gallery.json
+        format: json
+        fields:
+          - label: Images
+            name: images
+            widget: list
+            summary: '{{fields.alt}}'
+            fields:
+              - {label: Image, name: image, widget: image}
+              - {label: Alt text, name: alt, widget: string, required: false}
+      - name: testimonials
+        label: Testimonials
+        file: content/testimonials.json
+        format: json
+        fields:
+          - label: Testimonials
+            name: items
+            widget: list
+            fields:
+              - label: Type
+                name: type
+                widget: select
+                options: [text, image]
+              - {label: Name or label, name: name, widget: string, required: false}
+              - {label: Written testimonial, name: text, widget: text, required: false}
+              - {label: Screenshot / image testimonial, name: image, widget: image, required: false}

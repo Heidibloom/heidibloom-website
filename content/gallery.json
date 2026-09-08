@@ -1,0 +1,7 @@
+{
+  "images": [
+    {"image": "/uploads/gallery-1.svg", "alt": "Gallery placeholder one"},
+    {"image": "/uploads/gallery-2.svg", "alt": "Gallery placeholder two"},
+    {"image": "/uploads/gallery-3.svg", "alt": "Gallery placeholder three"}
+  ]
+}
