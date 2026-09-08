@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: REPLACE_WITH_GITHUB_USERNAME/REPLACE_WITH_REPOSITORY
+  repo: Heidibloom/heidibloom-website
   branch: main
 
 media_folder: uploads
