@@ -1,10 +1,29 @@
 {
   "siteName": "Heidi Bloom",
   "tagline": "Private, polished, and effortlessly personal.",
-  "about": "Welcome. This space is designed to feel warm, elegant, and easy to explore. Use the inquiry form below to get in touch. I am excited to hear from you!!",
   "homepageImage": "/uploads/HRpbYqKacAAffQM.jpeg",
   "theme": "midnight",
   "customAccent": "#62ae47",
+
+  "showAbout": true,
+  "about": "Welcome. This space is designed to feel warm, elegant, and easy to explore. Use the inquiry form below to get in touch.",
+
+  "showServices": false,
+  "services": [],
+
+  "showRestrictions": false,
+  "restrictions": [],
+
+  "showSocials": false,
+  "instagram": "",
+  "twitter": "",
+  "otherSocialLabel": "",
+  "otherSocialUrl": "",
+
+  "showGallery": true,
+  "showTestimonials": true,
+
+  "showInquiry": true,
   "inquiryHeading": "Private Inquiry",
   "inquiryNote": "Please share your preferred date, timing, and any helpful details."
 }
