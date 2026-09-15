@@ -18,8 +18,8 @@ collections:
         fields:
           - {label: Site name, name: siteName, widget: string}
           - {label: Tagline, name: tagline, widget: string}
-          - {label: About, name: about, widget: text}
           - {label: Homepage image, name: homepageImage, widget: image}
+
           - label: Theme
             name: theme
             widget: select
@@ -30,9 +30,70 @@ collections:
               - {label: Midnight, value: midnight}
               - {label: Sand, value: sand}
               - {label: Custom accent, value: custom}
+
           - {label: Custom accent color, name: customAccent, widget: color, required: false}
-          - {label: Inquiry heading, name: inquiryHeading, widget: string}
-          - {label: Inquiry note, name: inquiryNote, widget: text}
+
+          - label: About Heidi
+            name: showAbout
+            widget: boolean
+            default: true
+
+          - {label: About text, name: about, widget: text, required: false}
+
+          - label: Services & Rates
+            name: showServices
+            widget: boolean
+            default: false
+
+          - label: Services
+            name: services
+            widget: list
+            required: false
+            fields:
+              - {label: Service, name: name, widget: string}
+              - {label: Description, name: description, widget: text, required: false}
+              - {label: Duration, name: duration, widget: string, required: false}
+              - {label: Rate, name: rate, widget: string, required: false}
+
+          - label: Restrictions
+            name: showRestrictions
+            widget: boolean
+            default: false
+
+          - label: Restrictions list
+            name: restrictions
+            widget: list
+            required: false
+            field: {label: Restriction, name: item, widget: string}
+
+          - label: Socials
+            name: showSocials
+            widget: boolean
+            default: false
+
+          - {label: Instagram URL, name: instagram, widget: string, required: false}
+          - {label: X / Twitter URL, name: twitter, widget: string, required: false}
+          - {label: Other social label, name: otherSocialLabel, widget: string, required: false}
+          - {label: Other social URL, name: otherSocialUrl, widget: string, required: false}
+
+          - label: Gallery
+            name: showGallery
+            widget: boolean
+            default: true
+
+          - label: Testimonials
+            name: showTestimonials
+            widget: boolean
+            default: true
+
+          - label: Private Inquiry
+            name: showInquiry
+            widget: boolean
+            default: true
+
+          - {label: Inquiry heading, name: inquiryHeading, widget: string, required: false}
+          - {label: Inquiry note, name: inquiryNote, widget: text, required: false}
+
       - name: gallery
         label: Gallery
         file: content/gallery.json
@@ -41,10 +102,12 @@ collections:
           - label: Images
             name: images
             widget: list
+            required: false
             summary: '{{fields.alt}}'
             fields:
               - {label: Image, name: image, widget: image}
               - {label: Alt text, name: alt, widget: string, required: false}
+
       - name: testimonials
         label: Testimonials
         file: content/testimonials.json
