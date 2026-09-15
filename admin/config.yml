@@ -29,8 +29,14 @@ collections:
               - {label: Sage, value: sage}
               - {label: Midnight, value: midnight}
               - {label: Sand, value: sand}
+              - {label: Burgundy, value: burgundy}
+              - {label: Champagne, value: champagne}
+              - {label: Espresso, value: espresso}
+              - {label: Plum, value: plum}
+              - {label: Black & Gold, value: blackgold}
+              - {label: Ivory, value: ivory}
+              - {label: Mocha, value: mocha}
               - {label: Custom accent, value: custom}
-
           - {label: Custom accent color, name: customAccent, widget: color, required: false}
 
           - label: About Heidi
