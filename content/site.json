@@ -4,25 +4,21 @@
   "homepageImage": "/uploads/HRpbYqKacAAffQM.jpeg",
   "theme": "midnight",
   "customAccent": "#62ae47",
-
   "showAbout": true,
   "about": "Welcome. This space is designed to feel warm, elegant, and easy to explore. Use the inquiry form below to get in touch.",
-
   "showServices": false,
   "services": [],
-
-  "showRestrictions": false,
-  "restrictions": [],
-
+  "showRestrictions": true,
+  "restrictions": [
+    "No BBFS"
+  ],
   "showSocials": false,
   "instagram": "",
   "twitter": "",
   "otherSocialLabel": "",
   "otherSocialUrl": "",
-
   "showGallery": true,
   "showTestimonials": true,
-
   "showInquiry": true,
   "inquiryHeading": "Private Inquiry",
   "inquiryNote": "Please share your preferred date, timing, and any helpful details."
