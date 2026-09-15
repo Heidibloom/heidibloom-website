@@ -409,13 +409,32 @@ footer{
 
 /* Themes */
 
+/* Themes */
+
+body.theme-classic{
+  --bg:#fbf8f9;
+  --text:#221c1f;
+  --muted:#74656c;
+  --card:#ffffff;
+  --line:#e8dde2;
+  --accent:#8e6f7d;
+}
+
 body.theme-rose{
   --bg:#fff7f8;
+  --text:#2b2024;
+  --muted:#806a72;
+  --card:#ffffff;
+  --line:#eddde2;
   --accent:#a85b70;
 }
 
 body.theme-sage{
   --bg:#f7faf6;
+  --text:#20261f;
+  --muted:#697267;
+  --card:#ffffff;
+  --line:#dde5da;
   --accent:#6e7f69;
 }
 
@@ -430,7 +449,81 @@ body.theme-midnight{
 
 body.theme-sand{
   --bg:#faf6ef;
+  --text:#2c251f;
+  --muted:#7c6e62;
+  --card:#fffdf9;
+  --line:#e7ddd0;
   --accent:#9a795f;
+}
+
+/* Deep wine red + soft cream */
+body.theme-burgundy{
+  --bg:#241316;
+  --text:#f8eeee;
+  --muted:#cfb8bc;
+  --card:#321a1f;
+  --line:#513039;
+  --accent:#a85f6b;
+}
+
+/* Warm luxury neutral */
+body.theme-champagne{
+  --bg:#f7f1e7;
+  --text:#302820;
+  --muted:#7e7163;
+  --card:#fffaf1;
+  --line:#e4d6c1;
+  --accent:#a47e4f;
+}
+
+/* Dark warm brown */
+body.theme-espresso{
+  --bg:#1c1715;
+  --text:#f5eee9;
+  --muted:#c4b5ac;
+  --card:#29211e;
+  --line:#463a34;
+  --accent:#b18468;
+}
+
+/* Deep elegant purple */
+body.theme-plum{
+  --bg:#21161f;
+  --text:#f7eff6;
+  --muted:#c8b5c4;
+  --card:#30212e;
+  --line:#4b3748;
+  --accent:#a9759d;
+}
+
+/* Dramatic black + muted gold */
+body.theme-blackgold{
+  --bg:#0d0d0d;
+  --text:#f6f1e7;
+  --muted:#bbb2a2;
+  --card:#181818;
+  --line:#34302a;
+  --accent:#b99a5f;
+}
+
+/* Bright editorial cream */
+body.theme-ivory{
+  --bg:#fffdf6;
+  --text:#292621;
+  --muted:#777066;
+  --card:#ffffff;
+  --line:#e8e1d4;
+  --accent:#8f7658;
+}
+
+/* Soft coffee neutral */
+body.theme-mocha{
+  --bg:#eee5dd;
+  --text:#302721;
+  --muted:#75675d;
+  --card:#f8f2ed;
+  --line:#d9c9bd;
+  --accent:#8b6653;
 }
 
 /* Mobile */
