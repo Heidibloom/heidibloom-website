@@ -25,5 +25,46 @@
     </div>
   </main>
 
+  <script>
+    (async () => {
+      try {
+        const response = await fetch(
+          'https://raw.githubusercontent.com/Heidibloom/heidibloom-website/main/content/site.json',
+          { cache: 'no-store' }
+        );
+
+        if (!response.ok) return;
+
+        const site = await response.json();
+
+        document.body.className =
+          'theme-' + (site.theme || 'midnight');
+
+        if (
+          site.useCustomAccent === true &&
+          site.customAccent
+        ) {
+          document.body.style.setProperty(
+            '--accent',
+            site.customAccent
+          );
+        }
+
+        const brand =
+          document.querySelector('.eyebrow');
+
+        if (brand && site.siteName) {
+          brand.textContent =
+            site.siteName.toUpperCase();
+        }
+      } catch (error) {
+        console.error(
+          'Unable to load website theme:',
+          error
+        );
+      }
+    })();
+  </script>
+
 </body>
 </html>
