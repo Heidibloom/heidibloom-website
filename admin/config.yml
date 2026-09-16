@@ -20,6 +20,15 @@ collections:
           - {label: Tagline, name: tagline, widget: string}
           - {label: Homepage image, name: homepageImage, widget: image}
 
+          - label: Homepage image position
+            name: heroPosition
+            widget: select
+            default: center
+            options:
+              - {label: Top, value: top}
+              - {label: Center, value: center}
+              - {label: Bottom, value: bottom}
+
           - label: Theme
             name: theme
             widget: select
@@ -36,6 +45,7 @@ collections:
               - {label: Black & Gold, value: blackgold}
               - {label: Ivory, value: ivory}
               - {label: Mocha, value: mocha}
+
           - {label: Use custom accent color, name: useCustomAccent, widget: boolean, default: false}
           - {label: Custom accent color, name: customAccent, widget: color, required: false}
 
@@ -43,14 +53,25 @@ collections:
             name: showAbout
             widget: boolean
             default: true
-
           - {label: About text, name: about, widget: text, required: false}
+
+          - label: Availability
+            name: showAvailability
+            widget: boolean
+            default: false
+          - label: Availability entries
+            name: availability
+            widget: list
+            required: false
+            fields:
+              - {label: Location, name: location, widget: string}
+              - {label: Dates, name: dates, widget: string}
+              - {label: Details, name: details, widget: text, required: false}
 
           - label: Services & Rates
             name: showServices
             widget: boolean
             default: false
-
           - label: Services
             name: services
             widget: list
@@ -65,18 +86,28 @@ collections:
             name: showRestrictions
             widget: boolean
             default: false
-
           - label: Restrictions list
             name: restrictions
             widget: list
             required: false
             field: {label: Restriction, name: item, widget: string}
 
+          - label: FAQ
+            name: showFaq
+            widget: boolean
+            default: false
+          - label: FAQ questions
+            name: faq
+            widget: list
+            required: false
+            fields:
+              - {label: Question, name: question, widget: string}
+              - {label: Answer, name: answer, widget: text}
+
           - label: Socials
             name: showSocials
             widget: boolean
             default: false
-
           - {label: Instagram URL, name: instagram, widget: string, required: false}
           - {label: X / Twitter URL, name: twitter, widget: string, required: false}
           - {label: Other social label, name: otherSocialLabel, widget: string, required: false}
@@ -96,9 +127,17 @@ collections:
             name: showInquiry
             widget: boolean
             default: true
-
           - {label: Inquiry heading, name: inquiryHeading, widget: string, required: false}
           - {label: Inquiry note, name: inquiryNote, widget: text, required: false}
+
+          - label: Search & Social Sharing
+            name: seoSettings
+            widget: object
+            required: false
+            fields:
+              - {label: Page title, name: title, widget: string, required: false}
+              - {label: Description, name: description, widget: text, required: false}
+              - {label: Social sharing image, name: image, widget: image, required: false}
 
       - name: gallery
         label: Gallery
