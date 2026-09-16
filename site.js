@@ -33,7 +33,7 @@ const liveImage = (path) => {
     // Theme
     document.body.classList.add('theme-' + (site.theme || 'classic'));
 
-    if (site.theme === 'custom' && site.customAccent) {
+    if (site.useCustomAccent === true && site.customAccent) {
       document.documentElement.style.setProperty(
         '--accent',
         site.customAccent
