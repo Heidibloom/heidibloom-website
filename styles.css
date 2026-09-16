@@ -593,3 +593,231 @@ body.theme-mocha{
     font-size:22px;
   }
 }
+/* =========================================================
+   Final feature additions
+   Availability, FAQ, gallery lightbox and thank-you page
+   ========================================================= */
+
+/* Availability */
+
+.availability-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.availability-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+}
+
+.availability-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.availability-dates {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.availability-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+
+/* FAQ */
+
+.faq-list {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item summary {
+  position: relative;
+  padding: 20px 42px 20px 0;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 42px 20px 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+
+/* Gallery lightbox */
+
+.gallery img {
+  cursor: zoom-in;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  display: block;
+  max-width: min(1100px, 88vw);
+  max-height: 86vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.lightbox-close,
+.lightbox-nav {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lightbox-close {
+  top: 18px;
+  right: 24px;
+  padding: 8px;
+  font-size: 2.4rem;
+}
+
+.lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 16px;
+  font-size: 3rem;
+}
+
+.lightbox-prev {
+  left: 18px;
+}
+
+.lightbox-next {
+  right: 18px;
+}
+
+
+/* Thank-you page */
+
+.thank-you-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.thank-you-card {
+  width: min(620px, 100%);
+  padding: 48px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--card);
+  text-align: center;
+}
+
+.thank-you-card .eyebrow {
+  margin-bottom: 12px;
+}
+
+.thank-you-card h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+.thank-you-card p {
+  margin: 0 auto 28px;
+  max-width: 480px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .availability-list {
+    grid-template-columns: 1fr;
+  }
+
+  .availability-card {
+    padding: 20px;
+  }
+
+  .lightbox {
+    padding: 58px 16px 28px;
+  }
+
+  .lightbox img {
+    max-width: 94vw;
+    max-height: 78vh;
+  }
+
+  .lightbox-nav {
+    top: auto;
+    bottom: 18px;
+    transform: none;
+    font-size: 2.5rem;
+  }
+
+  .lightbox-prev {
+    left: 24px;
+  }
+
+  .lightbox-next {
+    right: 24px;
+  }
+
+  .thank-you-card {
+    padding: 34px 22px;
+  }
+}
