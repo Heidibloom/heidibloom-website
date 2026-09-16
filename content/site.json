@@ -3,7 +3,7 @@
   "tagline": "Private, polished, and effortlessly personal.",
   "homepageImage": "/uploads/HQEDT91bAAAWKHe.jpeg",
   "theme": "sage",
-  "useCustomAccent": true,
+  "useCustomAccent": false,
   "customAccent": "#7e0752",
   "showAbout": true,
   "about": "Welcome. This space is designed to feel warm, elegant, and easy to explore. Use the inquiry form below to get in touch.",
