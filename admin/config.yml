@@ -36,7 +36,6 @@ collections:
               - {label: Black & Gold, value: blackgold}
               - {label: Ivory, value: ivory}
               - {label: Mocha, value: mocha}
-              - {label: Custom accent, value: custom}
           - {label: Use custom accent color, name: useCustomAccent, widget: boolean, default: false}
           - {label: Custom accent color, name: customAccent, widget: color, required: false}
 
