@@ -1,10 +1,10 @@
 {
   "items": [
     {
-      "type": "text",
+      "type": "image",
       "name": "Private guest",
       "text": "Test",
-      "image": ""
+      "image": "/uploads/IMG_0623.jpeg"
     },
     {
       "type": "text",
