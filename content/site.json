@@ -23,7 +23,7 @@
   "restrictions": [
     "I play safe. So please don’t ask otherwise"
   ],
-  "showFaq": true,
+  "showFaq": false,
   "faq": [],
   "showSocials": true,
   "instagram": "",
