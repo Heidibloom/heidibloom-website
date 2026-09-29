@@ -135,7 +135,14 @@ const liveImage = (path) => {
       {
         show: site.showGallery !== false,
         id: 'gallerySection',
-        label: 'Gallery'
+        label: 'Gallery',
+        href: 'gallery.html'
+      },
+      {
+        show: site.showWishlist === true,
+        id: 'wishlist',
+        label: 'Wishlist',
+        href: 'wishlist.html'
       },
       {
         show: site.showTestimonials !== false,
@@ -312,8 +319,12 @@ const liveImage = (path) => {
 
     const galleryItems =
       (gallery.images || []).filter(item => item.image);
+    const homepageGalleryItems = [...galleryItems]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 9);
 
-    galleryItems.forEach((item, index) => {
+    homepageGalleryItems.forEach((item) => {
+      const index = galleryItems.indexOf(item);
       const image = document.createElement('img');
 
       image.src = liveImage(item.image);
@@ -542,7 +553,7 @@ const liveImage = (path) => {
     visibleSections.forEach(section => {
       const link = document.createElement('a');
 
-      link.href = `#${section.id}`;
+      link.href = section.href || `#${section.id}`;
       link.textContent = section.label;
 
       menuLinks.appendChild(link);
