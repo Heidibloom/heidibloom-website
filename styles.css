@@ -821,3 +821,116 @@ body.lightbox-open {
     padding: 34px 22px;
   }
 }
+
+/* ========================================
+   About text formatting
+   Preserve paragraph breaks entered in CMS
+======================================== */
+
+#aboutText {
+  white-space: pre-line;
+}
+
+
+/* ========================================
+   Gallery + Wishlist subpages
+======================================== */
+
+.subpage-header {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px max(5vw, 24px);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.subpage-back {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 24px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.subpage-back:hover {
+  transform: translateX(-3px);
+}
+
+.subpage-brand {
+  font-family: Georgia, serif;
+  font-size: 26px;
+  text-decoration: none;
+}
+
+.subpage-main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px max(5vw, 24px) 80px;
+}
+
+
+/* Full Gallery */
+
+.full-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.full-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+
+/* Wishlist */
+
+.wishlist-text {
+  white-space: pre-line;
+  max-width: 760px;
+  margin-top: 30px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+
+/* Mobile subpages */
+
+@media (max-width: 700px) {
+
+  .subpage-header {
+    padding: 20px;
+  }
+
+  .subpage-brand {
+    font-size: 22px;
+  }
+
+  .subpage-main {
+    padding: 10px 20px 60px;
+  }
+
+  .full-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .full-gallery img {
+    border-radius: 12px;
+  }
+
+  .wishlist-text {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+}
