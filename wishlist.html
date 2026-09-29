@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wishlist | Heidi Bloom</title>
+  <meta
+    name="description"
+    content="Heidi Bloom wishlist"
+  >
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header class="subpage-header">
+    <a href="index.html" class="subpage-back" aria-label="Back to home">
+      ←
+    </a>
+
+    <a href="index.html" class="subpage-brand">
+      Heidi Bloom
+    </a>
+  </header>
+
+  <main class="subpage-main">
+
+    <section class="section wishlist-page">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">WISHLIST</p>
+          <h1 id="wishlistHeading">Wishlist</h1>
+        </div>
+      </div>
+
+      <div
+        id="wishlistText"
+        class="wishlist-text"
+      ></div>
+    </section>
+
+  </main>
+
+  <script>
+    const getJSON = async (path) => {
+      const response = await fetch(path, { cache: 'no-store' });
+
+      if (!response.ok) {
+        throw new Error(path);
+      }
+
+      return response.json();
+    };
+
+    (async () => {
+      try {
+        const site = await getJSON(
+          'https://raw.githubusercontent.com/Heidibloom/heidibloom-website/main/content/site.json'
+        );
+
+        /* Match Heidi's current website theme */
+        document.body.classList.add(
+          'theme-' + (site.theme || 'classic')
+        );
+
+        /* Apply custom accent if Heidi has enabled one */
+        if (
+          site.useCustomAccent === true &&
+          site.customAccent
+        ) {
+          document.body.style.setProperty(
+            '--accent',
+            site.customAccent
+          );
+        }
+
+        /* Site branding */
+        const brand =
+          document.querySelector('.subpage-brand');
+
+        if (brand) {
+          brand.textContent =
+            site.siteName || 'Heidi Bloom';
+        }
+
+        document.title =
+          `Wishlist | ${site.siteName || 'Heidi Bloom'}`;
+
+        /* Wishlist heading */
+        const heading =
+          document.getElementById('wishlistHeading');
+
+        heading.textContent =
+          site.wishlistHeading || 'Wishlist';
+
+        /* Wishlist content */
+        const wishlist =
+          document.getElementById('wishlistText');
+
+        wishlist.textContent =
+          site.wishlist || '';
+
+        /*
+          If Wishlist has been disabled in the CMS,
+          don't expose an old wishlist through its direct URL.
+        */
+        if (site.showWishlist !== true) {
+          window.location.replace('index.html');
+          return;
+        }
+
+      } catch (error) {
+        console.error(
+          'Unable to load wishlist:',
+          error
+        );
+      }
+    })();
+  </script>
+
+</body>
+</html>
