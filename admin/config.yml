@@ -67,13 +67,12 @@ collections:
               - {label: Location, name: location, widget: string}
               - {label: Dates, name: dates, widget: string}
               - {label: Details, name: details, widget: text, required: false}
-                     - label: Wishlist
-            name: showWishlist
-            widget: boolean
-            default: false
-          - {label: Wishlist heading, name: wishlistHeading, widget: string, required: false, default: Wishlist}
-          - {label: Wishlist text, name: wishlist, widget: text, required: false}
-
+      - label: Wishlist
+        name: showWishlist
+        widget: boolean
+        default: false
+      - {label: Wishlist heading, name: wishlistHeading, widget: string, required: false, default: Wishlist}
+      - {label: Wishlist text, name: wishlist, widget: text, required: false}
           - label: Services & Rates
             name: showServices
             widget: boolean
