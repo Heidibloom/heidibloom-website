@@ -510,15 +510,7 @@ const liveImage = (path) => {
 
     drawTestimonial();
 
-    setInterval(() => {
-      if (items.length > 1) {
-        testimonialIndex =
-          (testimonialIndex + 1) %
-          items.length;
 
-        drawTestimonial();
-      }
-    }, 6000);
 
     // Inquiry
     document.getElementById(
