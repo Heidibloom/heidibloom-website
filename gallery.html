@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gallery | Heidi Bloom</title>
+  <meta
+    name="description"
+    content="Heidi Bloom gallery"
+  >
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header class="subpage-header">
+    <a href="index.html" class="subpage-back" aria-label="Back to home">
+      ←
+    </a>
+
+    <a href="index.html" class="subpage-brand">
+      Heidi Bloom
+    </a>
+  </header>
+
+  <main class="subpage-main">
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">GALLERY</p>
+          <h1>Selected moments</h1>
+        </div>
+      </div>
+
+      <div
+        id="fullGallery"
+        class="gallery"
+        aria-label="Full photo gallery"
+      ></div>
+    </section>
+
+  </main>
+
+  <div
+    id="lightbox"
+    class="lightbox"
+    aria-hidden="true"
+  >
+    <button
+      id="lightboxClose"
+      class="lightbox-close"
+      type="button"
+      aria-label="Close gallery"
+    >
+      ×
+    </button>
+
+    <button
+      id="lightboxPrev"
+      class="lightbox-nav lightbox-prev"
+      type="button"
+      aria-label="Previous image"
+    >
+      ‹
+    </button>
+
+    <img
+      id="lightboxImage"
+      class="lightbox-image"
+      src=""
+      alt=""
+    >
+
+    <button
+      id="lightboxNext"
+      class="lightbox-nav lightbox-next"
+      type="button"
+      aria-label="Next image"
+    >
+      ›
+    </button>
+  </div>
+
+  <script>
+    const getJSON = async (path) => {
+      const response = await fetch(path, { cache: 'no-store' });
+      if (!response.ok) throw new Error(path);
+      return response.json();
+    };
+
+    const liveImage = (path) => {
+      if (!path) return '';
+
+      if (path.startsWith('/uploads/')) {
+        return `https://raw.githubusercontent.com/Heidibloom/heidibloom-website/main${path}`;
+      }
+
+      return path;
+    };
+
+    (async () => {
+      try {
+        const [site, gallery] = await Promise.all([
+          getJSON(
+            'https://raw.githubusercontent.com/Heidibloom/heidibloom-website/main/content/site.json'
+          ),
+          getJSON(
+            'https://raw.githubusercontent.com/Heidibloom/heidibloom-website/main/content/gallery.json'
+          )
+        ]);
+
+        /* Match the main website theme */
+        document.body.classList.add(
+          'theme-' + (site.theme || 'classic')
+        );
+
+        if (
+          site.useCustomAccent === true &&
+          site.customAccent
+        ) {
+          document.body.style.setProperty(
+            '--accent',
+            site.customAccent
+          );
+        }
+
+        const brand =
+          document.querySelector('.subpage-brand');
+
+        if (brand) {
+          brand.textContent =
+            site.siteName || 'Heidi Bloom';
+        }
+
+        document.title =
+          `Gallery | ${site.siteName || 'Heidi Bloom'}`;
+
+        const galleryItems =
+          (gallery.images || []).filter(
+            item => item.image
+          );
+
+        const galleryBox =
+          document.getElementById('fullGallery');
+
+        const lightbox =
+          document.getElementById('lightbox');
+
+        const lightboxImage =
+          document.getElementById('lightboxImage');
+
+        const lightboxClose =
+          document.getElementById('lightboxClose');
+
+        const lightboxPrev =
+          document.getElementById('lightboxPrev');
+
+        const lightboxNext =
+          document.getElementById('lightboxNext');
+
+        let lightboxIndex = 0;
+
+        function drawLightbox() {
+          if (!galleryItems.length) return;
+
+          const item =
+            galleryItems[lightboxIndex];
+
+          lightboxImage.src =
+            liveImage(item.image);
+
+          lightboxImage.alt =
+            item.alt || 'Gallery image';
+        }
+
+        function openLightbox(index) {
+          if (!galleryItems.length) return;
+
+          lightboxIndex = index;
+          drawLightbox();
+
+          lightbox.classList.add('open');
+          lightbox.setAttribute(
+            'aria-hidden',
+            'false'
+          );
+
+          document.body.classList.add(
+            'lightbox-open'
+          );
+
+          lightboxClose.focus();
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('open');
+
+          lightbox.setAttribute(
+            'aria-hidden',
+            'true'
+          );
+
+          document.body.classList.remove(
+            'lightbox-open'
+          );
+        }
+
+        function previousImage() {
+          if (!galleryItems.length) return;
+
+          lightboxIndex =
+            (
+              lightboxIndex -
+              1 +
+              galleryItems.length
+            ) % galleryItems.length;
+
+          drawLightbox();
+        }
+
+        function nextImage() {
+          if (!galleryItems.length) return;
+
+          lightboxIndex =
+            (lightboxIndex + 1) %
+            galleryItems.length;
+
+          drawLightbox();
+        }
+
+        galleryItems.forEach(
+          (item, index) => {
+            const image =
+              document.createElement('img');
+
+            image.src =
+              liveImage(item.image);
+
+            image.alt =
+              item.alt || 'Gallery image';
+
+            image.loading = 'lazy';
+            image.tabIndex = 0;
+
+            image.setAttribute(
+              'role',
+              'button'
+            );
+
+            image.setAttribute(
+              'aria-label',
+              `Open gallery image ${index + 1}`
+            );
+
+            image.addEventListener(
+              'click',
+              () => openLightbox(index)
+            );
+
+            image.addEventListener(
+              'keydown',
+              event => {
+                if (
+                  event.key === 'Enter' ||
+                  event.key === ' '
+                ) {
+                  event.preventDefault();
+                  openLightbox(index);
+                }
+              }
+            );
+
+            galleryBox.appendChild(image);
+          }
+        );
+
+        lightboxClose.addEventListener(
+          'click',
+          closeLightbox
+        );
+
+        lightboxPrev.addEventListener(
+          'click',
+          previousImage
+        );
+
+        lightboxNext.addEventListener(
+          'click',
+          nextImage
+        );
+
+        lightbox.addEventListener(
+          'click',
+          event => {
+            if (event.target === lightbox) {
+              closeLightbox();
+            }
+          }
+        );
+
+        document.addEventListener(
+          'keydown',
+          event => {
+            if (
+              event.key === 'Escape' &&
+              lightbox.classList.contains('open')
+            ) {
+              closeLightbox();
+            }
+
+            if (
+              event.key === 'ArrowLeft' &&
+              lightbox.classList.contains('open')
+            ) {
+              previousImage();
+            }
+
+            if (
+              event.key === 'ArrowRight' &&
+              lightbox.classList.contains('open')
+            ) {
+              nextImage();
+            }
+          }
+        );
+
+      } catch (error) {
+        console.error(
+          'Unable to load gallery:',
+          error
+        );
+      }
+    })();
+  </script>
+
+</body>
+</html>
